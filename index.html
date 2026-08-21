@@ -1,956 +1,829 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#07070d" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#06060b" />
+<meta name="color-scheme" content="dark" />
 
-  <!-- ============ SEO ============ -->
-  <title>CreatorSync — Record Portrait &amp; Landscape at Once. Voice-Paced Teleprompter.</title>
-  <meta name="description" content="CreatorSync records 16:9 and 9:16 simultaneously while a voice-paced teleprompter scrolls itself — advancing only on the words you actually speak. Face tracking, real-time highlighting, and pro recording for macOS, iPhone and iPad." />
-  <meta name="keywords" content="teleprompter, voice paced teleprompter, dual aspect recording, portrait and landscape recording, face tracking camera, content creator app, macOS teleprompter, iOS teleprompter" />
-  <meta name="author" content="Syncdrop" />
-  <link rel="canonical" href="https://creatorsync.app/" />
+<title>SyncDrop — AI Lip Sync, Voice &amp; Vision. Built to Ship.</title>
+<meta name="description" content="SyncDrop is an AI products and services studio. Our lip-sync engine locks any audio to any face, frame for frame. We also build TTS, speech recognition, voice cloning, AR beauty, video analytics and the apps around them." />
+<meta name="author" content="SyncDrop" />
+<link rel="canonical" href="https://www.syncdrop.in/" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="CreatorSync — One take. Every aspect ratio." />
-  <meta property="og:description" content="Record portrait and landscape at the same time. A teleprompter that scrolls when you speak, not on a timer." />
-  <meta property="og:url" content="https://creatorsync.app/" />
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="SyncDrop" />
+<meta property="og:url" content="https://www.syncdrop.in/" />
+<meta property="og:title" content="SyncDrop — Any voice. Any face. Perfectly in sync." />
+<meta property="og:description" content="An AI products and services studio. Lip sync, speech, vision and the software around them — built production-grade, shipped to real users." />
+<meta property="og:image" content="https://www.syncdrop.in/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="SyncDrop — any voice, any face, perfectly in sync." />
+<meta property="og:locale" content="en_US" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="CreatorSync" />
-  <meta name="twitter:description" content="One take. Every aspect ratio. A teleprompter paced by your voice." />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SyncDrop — Any voice. Any face. Perfectly in sync." />
+<meta name="twitter:description" content="AI lip sync, speech, vision and custom software. We ship it." />
+<meta name="twitter:image" content="https://www.syncdrop.in/og.png" />
 
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "CreatorSync",
-    "operatingSystem": "iOS, iPadOS, macOS",
-    "applicationCategory": "MultimediaApplication",
-    "offers": { "@type": "Offer", "price": "4.99", "priceCurrency": "USD" },
-    "publisher": { "@type": "Organization", "name": "Syncdrop" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "2148" }
-  }
-  </script>
+<!-- Favicon: droplet + waveform -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232dd4bf'/%3E%3Cstop offset='.5' stop-color='%2322d3ee'/%3E%3Cstop offset='1' stop-color='%23a855f7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%230a0a12'/%3E%3Cpath d='M16 5c5.4 6.2 8.4 10.3 8.4 13.9a8.4 8.4 0 0 1-16.8 0C7.6 15.3 10.6 11.2 16 5Z' fill='url(%23g)'/%3E%3Cg fill='%230a0a12'%3E%3Crect x='11.8' y='16.5' width='2' height='5' rx='1'/%3E%3Crect x='15' y='13.6' width='2' height='10.4' rx='1'/%3E%3Crect x='18.2' y='17.4' width='2' height='4' rx='1'/%3E%3C/g%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a12'/%3E%3Cpath d='M16 5c5.4 6.2 8.4 10.3 8.4 13.9a8.4 8.4 0 0 1-16.8 0C7.6 15.3 10.6 11.2 16 5Z' fill='%2322d3ee'/%3E%3C/svg%3E" />
 
-  <!-- Favicon: inline brand mark -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect x='87' y='87' width='850' height='850' rx='190' fill='%236C5CE7'/%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='M332,368 h360 a75,75 0 0 1 75,75 v137 a75,75 0 0 1 -75,75 h-360 a75,75 0 0 1 -75,-75 v-137 a75,75 0 0 1 75,-75 z M443,257 h137 a75,75 0 0 1 75,75 v360 a75,75 0 0 1 -75,75 h-137 a75,75 0 0 1 -75,-75 v-360 a75,75 0 0 1 75,-75 z'/%3E%3C/svg%3E" />
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/styles.css" />
 
-  <style>
-    /* ===================================================================
-       DESIGN TOKENS
-    =================================================================== */
-    :root {
-      --bg:            #07070d;
-      --bg-soft:       #0c0c16;
-      --surface:       rgba(255, 255, 255, 0.04);
-      --surface-2:     rgba(255, 255, 255, 0.07);
-      --border:        rgba(255, 255, 255, 0.09);
-      --border-strong: rgba(255, 255, 255, 0.16);
-      --text:          #f4f5fb;
-      --text-dim:      #a4a6bd;
-      --text-faint:    #6c6e87;
-
-      --brand:    #7c5cff;
-      --brand-2:  #4dd0ff;
-      --brand-3:  #ff5cc8;
-      --accent:   #2ee6a6;
-      --rec:      #ff4d4d;
-
-      --grad-primary: linear-gradient(120deg, #9C7BFF 0%, #6C5CE7 45%, #38BDF8 100%);
-      --grad-text:    linear-gradient(120deg, #b9a6ff 0%, #4dd0ff 55%, #2ee6a6 100%);
-
-      --radius:    22px;
-      --radius-sm: 14px;
-      --shadow:    0 30px 80px -30px rgba(0, 0, 0, 0.85);
-      --glow:      0 0 60px -12px rgba(124, 92, 255, 0.55);
-
-      --container: 1200px;
-      --ease:      cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    /* ===================================================================
-       RESET / BASE
-    =================================================================== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-    h1, h2, h3, h4 { font-family: 'Sora', 'Inter', sans-serif; line-height: 1.08; letter-spacing: -0.02em; font-weight: 800; }
-    a { color: inherit; text-decoration: none; }
-    img, svg { max-width: 100%; display: block; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-    ul { list-style: none; }
-    section { position: relative; }
-    ::selection { background: rgba(124, 92, 255, 0.4); color: #fff; }
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--brand), var(--brand-2)); border-radius: 10px; }
-
-    /* ===================================================================
-       LAYOUT HELPERS
-    =================================================================== */
-    .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: 24px; }
-    .pad { padding-block: clamp(72px, 11vw, 140px); }
-
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--brand-2);
-      padding: 7px 15px; border-radius: 100px;
-      background: var(--surface); border: 1px solid var(--border);
-    }
-    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
-
-    .grad-text {
-      background: var(--grad-text);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent; color: transparent;
-    }
-
-    .section-head { max-width: 720px; margin-inline: auto; text-align: center; margin-bottom: 56px; }
-    .section-head h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); margin: 18px 0 14px; }
-    .section-head p { color: var(--text-dim); font-size: 1.08rem; }
-
-    /* ===================================================================
-       BUTTONS
-    =================================================================== */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-      padding: 14px 26px; border-radius: 100px; font-weight: 600; font-size: 0.98rem;
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease), background .3s;
-      white-space: nowrap;
-    }
-    .btn-primary { background: var(--grad-primary); color: #fff; box-shadow: var(--glow); }
-    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 70px -8px rgba(124,92,255,.75); }
-    .btn-ghost { background: var(--surface); border: 1px solid var(--border-strong); color: var(--text); }
-    .btn-ghost:hover { transform: translateY(-3px); background: var(--surface-2); }
-    .btn svg { width: 18px; height: 18px; }
-
-    /* ===================================================================
-       NAVBAR
-    =================================================================== */
-    .nav {
-      position: fixed; inset: 0 0 auto 0; z-index: 100;
-      transition: background .4s, backdrop-filter .4s, border-color .4s, padding .4s;
-      border-bottom: 1px solid transparent;
-      padding-block: 18px;
-    }
-    .nav.scrolled {
-      background: rgba(7,7,13,.72); backdrop-filter: blur(18px) saturate(160%);
-      border-bottom-color: var(--border); padding-block: 11px;
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: flex; align-items: center; gap: 11px; font-family: 'Sora'; font-weight: 700; font-size: 1.12rem; letter-spacing: -0.01em; }
-    .brand .mark { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 6px 20px -6px rgba(108,92,231,.8); }
-    .nav-links { display: flex; gap: 30px; align-items: center; }
-    .nav-links a { color: var(--text-dim); font-size: .94rem; font-weight: 500; transition: color .25s; position: relative; }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -5px; width: 0; height: 2px; background: var(--grad-primary); border-radius: 2px; transition: width .3s var(--ease); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-cta { display: flex; gap: 12px; align-items: center; }
-    .menu-btn { display: none; width: 42px; height: 42px; border-radius: 11px; background: var(--surface); border: 1px solid var(--border); align-items: center; justify-content: center; }
-
-    /* ===================================================================
-       BACKGROUND DECOR
-    =================================================================== */
-    .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; z-index: 0; pointer-events: none; }
-    .grid-overlay {
-      position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .35;
-      background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
-    }
-
-    /* ===================================================================
-       HERO
-    =================================================================== */
-    .hero { padding: 150px 0 80px; overflow: hidden; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; }
-    .hero h1 { font-size: clamp(2.5rem, 5.4vw, 4.1rem); margin: 22px 0 20px; }
-    .hero h1 .line { display: block; }
-    .hero p.sub { font-size: 1.18rem; color: var(--text-dim); max-width: 540px; margin-bottom: 32px; }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 30px; }
-    .hero-meta { display: flex; gap: 26px; flex-wrap: wrap; color: var(--text-faint); font-size: .9rem; }
-    .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
-    .hero-meta svg { width: 16px; height: 16px; color: var(--accent); }
-    .stars { color: #ffce4d; letter-spacing: 2px; }
-
-    /* "Made in India" chip — CSS tricolour, no emoji dependency */
-    .made-in { display:inline-flex; align-items:center; gap:8px; font-weight:600; color:var(--text-dim);
-      padding:6px 12px; border-radius:100px; background:var(--surface); border:1px solid var(--border); }
-    .flag { width:22px; height:15px; border-radius:3px; overflow:hidden; flex:none; position:relative;
-      background:linear-gradient(#ff9933 0 33.33%, #ffffff 33.33% 66.66%, #138808 66.66% 100%);
-      box-shadow:0 0 0 1px rgba(255,255,255,.12) inset; }
-    .flag::after { content:""; position:absolute; left:50%; top:50%; width:5px; height:5px; transform:translate(-50%,-50%);
-      border-radius:50%; border:1.2px solid #0a3d91; box-sizing:border-box; }
-
-    /* ===================================================================
-       APP MOCKUP  (the animated centerpiece)
-    =================================================================== */
-    .app-window {
-      position: relative; z-index: 2;
-      background: linear-gradient(180deg, #11121d, #0a0b13);
-      border: 1px solid var(--border-strong);
-      border-radius: 18px;
-      box-shadow: var(--shadow), 0 0 0 1px rgba(255,255,255,.02) inset;
-      overflow: hidden;
-      transform: perspective(1600px) rotateY(-9deg) rotateX(3deg);
-      transition: transform .6s var(--ease);
-      animation: floatWin 7s ease-in-out infinite;
-    }
-    .app-window:hover { transform: perspective(1600px) rotateY(0deg) rotateX(0deg); }
-    @keyframes floatWin { 0%,100%{ translate: 0 0; } 50%{ translate: 0 -12px; } }
-
-    .titlebar { display: flex; align-items: center; gap: 14px; padding: 11px 14px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,.02); }
-    .traffic { display: flex; gap: 7px; }
-    .traffic i { width: 12px; height: 12px; border-radius: 50%; display: block; }
-    .traffic i:nth-child(1){ background:#ff5f57; } .traffic i:nth-child(2){ background:#febc2e; } .traffic i:nth-child(3){ background:#28c840; }
-    .titlebar .tb-title { font-family:'Sora'; font-weight:600; font-size:.82rem; }
-    .tb-status { display:flex; gap:8px; margin-left:auto; }
-    .chip { display:inline-flex; align-items:center; gap:6px; font-size:.68rem; font-weight:600; padding:5px 10px; border-radius:8px; background:var(--surface); border:1px solid var(--border); color:var(--text-dim); }
-    .chip.rec { color:#ffb3b3; } .chip.rec b{ color:#fff; font-variant-numeric:tabular-nums; }
-    .dot-rec { width:8px; height:8px; border-radius:50%; background:var(--rec); animation:pulse 1.3s infinite; }
-    .dot-live { width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent); animation:pulse 1.6s infinite; }
-
-    .app-body { display:grid; grid-template-columns: 1fr 1fr 1.04fr; gap:10px; padding:12px; }
-
-    /* preview panes */
-    .pane { position:relative; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#05060a; aspect-ratio: 3/4; }
-    .pane.landscape { aspect-ratio: 3/4; }
-    .pane-label { position:absolute; top:8px; left:8px; z-index:5; font-size:.62rem; font-weight:600; padding:4px 8px; border-radius:7px; background:rgba(0,0,0,.55); backdrop-filter:blur(6px); border:1px solid var(--border); color:var(--text-dim); }
-    /* stylized "studio" scene drawn in CSS */
-    .scene { position:absolute; inset:0; background:
-        radial-gradient(120% 80% at 50% 18%, rgba(124,92,255,.16), transparent 55%),
-        radial-gradient(60% 50% at 82% 30%, rgba(255,180,90,.20), transparent 60%),
-        linear-gradient(180deg, #15131f 0%, #0a0910 60%, #050409 100%); }
-    .scene::before { /* warm lamp glow */
-      content:""; position:absolute; right:8%; top:18%; width:34%; height:34%; border-radius:50%;
-      background:radial-gradient(circle, rgba(255,196,120,.55), transparent 70%); filter:blur(6px); }
-    .figure { position:absolute; inset:0; }
-    .figure .head { position:absolute; left:50%; top:23%; transform:translateX(-50%); width:42%; aspect-ratio:1; border-radius:50% 50% 48% 48%; background:linear-gradient(160deg,#caa6ff,#8b6ad6 55%,#4a3a78); box-shadow:0 0 30px -6px rgba(124,92,255,.5); animation:headBob 6s ease-in-out infinite; }
-    .pane.landscape .figure .head { width:36%; top:26%; }
-    .figure .torso { position:absolute; left:50%; bottom:0; translate:-50% 0; width:80%; height:46%; border-radius:46% 46% 0 0; background:linear-gradient(180deg,#211b33,#15111f); }
-    .mic { position:absolute; left:50%; bottom:0; translate:-50% 0; width:13%; z-index:3; }
-    .mic .cap { width:100%; aspect-ratio:.55/1; border-radius:40% 40% 32% 32%; background:linear-gradient(180deg,#3a3a44,#17171c); box-shadow:inset 0 4px 8px rgba(255,255,255,.08); }
-    .mic .stem { width:24%; height:30px; margin:0 auto; background:linear-gradient(#222,#111); }
-
-    /* face-tracking bracket — nested in the head so it always frames the face */
-    .track { position:absolute; inset:-19%; z-index:6; animation:trackPulse 3.6s ease-in-out infinite; }
-    .track i { position:absolute; width:26%; height:26%; border:2.5px solid var(--accent); filter:drop-shadow(0 0 4px rgba(46,230,166,.55)); }
-    .track i:nth-child(1){ left:0; top:0; border-right:0; border-bottom:0; border-radius:6px 0 0 0; }
-    .track i:nth-child(2){ right:0; top:0; border-left:0; border-bottom:0; border-radius:0 6px 0 0; }
-    .track i:nth-child(3){ left:0; bottom:0; border-right:0; border-top:0; border-radius:0 0 0 6px; }
-    .track i:nth-child(4){ right:0; bottom:0; border-left:0; border-top:0; border-radius:0 0 6px 0; }
-    @keyframes trackPulse { 0%,100%{ transform:scale(1); opacity:.85; } 50%{ transform:scale(1.05); opacity:1; } }
-    @keyframes headBob { 0%,100%{ transform:translateX(-50%) translateY(0); } 50%{ transform:translateX(-50%) translateY(-5%); } }
-
-    /* SCRIPT panel */
-    .script-panel { border:1px solid var(--border); border-radius:12px; background:linear-gradient(180deg,#0d0e18,#090a12); display:flex; flex-direction:column; overflow:hidden; }
-    .script-tabs { display:flex; gap:4px; padding:8px; border-bottom:1px solid var(--border); }
-    .script-tabs button { flex:1; font-size:.66rem; font-weight:600; padding:7px; border-radius:8px; color:var(--text-faint); }
-    .script-tabs button.active { background:rgba(124,92,255,.18); color:#fff; box-shadow:inset 0 0 0 1px rgba(124,92,255,.4); }
-    .script-scroll { position:relative; flex:1; padding:14px; overflow:hidden; }
-    .script-flow { font-family:'Sora'; font-weight:600; font-size:.82rem; line-height:1.5; color:#3f4258; animation:scrollScript 16s linear infinite; }
-    .script-flow w { transition:color .2s, background .2s; padding:0 1px; border-radius:3px; }
-    .script-flow w.spoken { color:var(--text); }
-    .script-flow w.now { color:#06210f; background:var(--accent); box-shadow:0 0 14px -2px var(--accent); }
-    @keyframes scrollScript { 0%{ transform:translateY(8%);} 100%{ transform:translateY(-58%);} }
-    .script-scroll::after { content:""; position:absolute; inset:0; pointer-events:none;
-      background:linear-gradient(180deg, #0b0c15 2%, transparent 16%, transparent 84%, #090a12 99%); }
-    .script-prog { padding:9px 12px; border-top:1px solid var(--border); }
-    .script-prog .lbl { font-size:.6rem; color:var(--accent); font-weight:600; margin-bottom:5px; }
-    .script-prog .bar { height:5px; border-radius:4px; background:rgba(255,255,255,.08); overflow:hidden; }
-    .script-prog .bar i { display:block; height:100%; border-radius:4px; background:linear-gradient(90deg,var(--accent),#7cffd0); animation:fillBar 16s linear infinite; }
-    @keyframes fillBar { 0%{ width:6%;} 100%{ width:96%;} }
-
-    /* controls row */
-    .app-controls { display:flex; gap:8px; padding:0 12px 12px; }
-    .app-controls button { flex:1; font-size:.7rem; font-weight:600; padding:10px; border-radius:10px; background:var(--surface); border:1px solid var(--border); color:var(--text-dim); }
-    .app-controls button.stop { background:linear-gradient(180deg,#ff5b5b,#e23b3b); color:#fff; border-color:transparent; flex:1.5; box-shadow:0 8px 22px -8px rgba(255,77,77,.7); }
-
-    /* meter bars */
-    .meter { display:inline-flex; align-items:flex-end; gap:2px; height:12px; }
-    .meter i { width:2.5px; background:var(--accent); border-radius:2px; height:30%; animation:eq .9s ease-in-out infinite; }
-    .meter i:nth-child(2){ animation-delay:.15s; } .meter i:nth-child(3){ animation-delay:.3s; }
-    .meter i:nth-child(4){ animation-delay:.45s; } .meter i:nth-child(5){ animation-delay:.6s; }
-    @keyframes eq { 0%,100%{ height:25%;} 50%{ height:100%;} }
-
-    /* floating feature tags around mockup */
-    .float-tag { position:absolute; z-index:5; display:flex; align-items:center; gap:8px; padding:9px 14px; border-radius:12px;
-      background:rgba(16,17,28,.82); backdrop-filter:blur(12px); border:1px solid var(--border-strong);
-      font-size:.8rem; font-weight:600; box-shadow:var(--shadow); }
-    .float-tag svg { width:17px; height:17px; }
-    .float-tag.t1 { top:8%; left:-7%; animation:bob 5s ease-in-out infinite; }
-    .float-tag.t2 { bottom:14%; right:-6%; animation:bob 6s ease-in-out infinite .8s; }
-
-    /* ===================================================================
-       LOGOS STRIP
-    =================================================================== */
-    .logos { padding-block: 36px; border-block: 1px solid var(--border); }
-    .logos p { text-align:center; color:var(--text-faint); font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:22px; }
-    .logo-row { display:flex; justify-content:center; flex-wrap:wrap; gap:46px; opacity:.6; }
-    .logo-row span { font-family:'Sora'; font-weight:700; font-size:1.15rem; color:var(--text-dim); }
-
-    /* ===================================================================
-       FEATURES
-    =================================================================== */
-    .feature-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .card {
-      background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-      padding:30px; transition:transform .4s var(--ease), border-color .4s, background .4s;
-      position:relative; overflow:hidden;
-    }
-    .card::before { content:""; position:absolute; inset:0; background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%), rgba(124,92,255,.10), transparent 60%); opacity:0; transition:opacity .4s; }
-    .card:hover { transform:translateY(-6px); border-color:var(--border-strong); background:var(--surface-2); }
-    .card:hover::before { opacity:1; }
-    .card .ico { width:50px; height:50px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:var(--grad-primary); margin-bottom:18px; box-shadow:var(--glow); }
-    .card .ico svg { width:25px; height:25px; color:#fff; }
-    .card h3 { font-size:1.22rem; margin-bottom:9px; }
-    .card p { color:var(--text-dim); font-size:.96rem; }
-    .card.wide { grid-column: span 2; }
-
-    /* ===================================================================
-       HOW IT WORKS
-    =================================================================== */
-    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-    .step { position:relative; padding:30px; border-radius:var(--radius); background:var(--surface); border:1px solid var(--border); }
-    .step .num { font-family:'Sora'; font-size:2.6rem; font-weight:800; background:var(--grad-text); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:10px; }
-    .step h3 { font-size:1.18rem; margin-bottom:8px; }
-    .step p { color:var(--text-dim); font-size:.95rem; }
-
-    /* ===================================================================
-       BENEFITS (split)
-    =================================================================== */
-    .split { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
-    .benefit-list { display:flex; flex-direction:column; gap:18px; }
-    .benefit { display:flex; gap:15px; align-items:flex-start; }
-    .benefit .tick { flex:none; width:30px; height:30px; border-radius:9px; background:rgba(46,230,166,.13); border:1px solid rgba(46,230,166,.3); display:flex; align-items:center; justify-content:center; }
-    .benefit .tick svg { width:16px; height:16px; color:var(--accent); }
-    .benefit h4 { font-size:1.05rem; font-family:'Inter'; font-weight:700; margin-bottom:3px; }
-    .benefit p { color:var(--text-dim); font-size:.92rem; }
-    .stat-card { background:linear-gradient(160deg, rgba(124,92,255,.14), rgba(77,208,255,.06)); border:1px solid var(--border-strong); border-radius:var(--radius); padding:40px; }
-    .stat-row { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
-    .stat .big { font-family:'Sora'; font-size:2.6rem; font-weight:800; background:var(--grad-text); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-    .stat .lbl { color:var(--text-dim); font-size:.88rem; }
-
-    /* ===================================================================
-       TESTIMONIALS
-    =================================================================== */
-    .quotes { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-    .quote { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:26px; transition:transform .4s var(--ease), border-color .4s; }
-    .quote:hover { transform:translateY(-5px); border-color:var(--border-strong); }
-    .quote .stars { font-size:.95rem; margin-bottom:12px; }
-    .quote p { font-size:.98rem; margin-bottom:18px; }
-    .who { display:flex; align-items:center; gap:11px; }
-    .who .av { width:40px; height:40px; border-radius:50%; background:var(--grad-primary); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.9rem; color:#fff; }
-    .who b { font-size:.9rem; } .who small { color:var(--text-faint); font-size:.78rem; }
-
-    /* ===================================================================
-       PRICING
-    =================================================================== */
-    .price-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
-    .price-single { max-width:460px; margin-inline:auto; }
-    .price-single .price { padding-top:42px; }
-    .price-single .amt { font-size:3.4rem; }
-    .price { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:34px 30px; display:flex; flex-direction:column; transition:transform .4s var(--ease); }
-    .price:hover { transform:translateY(-6px); }
-    .price.featured { background:linear-gradient(170deg, rgba(124,92,255,.18), rgba(12,12,22,.6)); border-color:var(--brand); box-shadow:var(--glow); position:relative; }
-    .price.featured .badge { position:absolute; top:-13px; left:50%; translate:-50% 0; background:var(--grad-primary); color:#fff; font-size:.7rem; font-weight:700; padding:6px 14px; border-radius:100px; letter-spacing:.06em; }
-    .price h3 { font-size:1.15rem; font-family:'Inter'; font-weight:700; margin-bottom:6px; }
-    .price .amt { font-family:'Sora'; font-size:2.7rem; font-weight:800; margin-bottom:4px; }
-    .price .amt span { font-size:1rem; font-weight:500; color:var(--text-faint); }
-    .price .desc { color:var(--text-dim); font-size:.9rem; margin-bottom:22px; }
-    .price ul { display:flex; flex-direction:column; gap:11px; margin-bottom:26px; flex:1; }
-    .price li { display:flex; gap:10px; font-size:.92rem; color:var(--text-dim); }
-    .price li svg { width:17px; height:17px; color:var(--accent); flex:none; margin-top:3px; }
-    .price .btn { width:100%; }
-
-    /* ===================================================================
-       FAQ
-    =================================================================== */
-    .faq-list { max-width:780px; margin-inline:auto; display:flex; flex-direction:column; gap:12px; }
-    .faq-item { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; transition:border-color .3s; }
-    .faq-item[open] { border-color:var(--border-strong); }
-    .faq-item summary { list-style:none; cursor:pointer; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; gap:16px; font-weight:600; font-size:1.02rem; }
-    .faq-item summary::-webkit-details-marker { display:none; }
-    .faq-item summary .ico { flex:none; width:26px; height:26px; border-radius:8px; background:var(--surface-2); display:flex; align-items:center; justify-content:center; transition:transform .3s, background .3s; }
-    .faq-item[open] summary .ico { transform:rotate(45deg); background:var(--brand); }
-    .faq-item .ans { padding:0 24px 22px; color:var(--text-dim); font-size:.96rem; }
-
-    /* ===================================================================
-       FINAL CTA
-    =================================================================== */
-    .final-cta .box { position:relative; overflow:hidden; text-align:center; border-radius:32px; padding:clamp(48px,7vw,90px) 24px; border:1px solid var(--border-strong);
-      background:linear-gradient(160deg, rgba(124,92,255,.20), rgba(77,208,255,.08)); }
-    .final-cta h2 { font-size:clamp(2rem,4.6vw,3.3rem); margin-bottom:16px; }
-    .final-cta p { color:var(--text-dim); font-size:1.1rem; max-width:540px; margin:0 auto 30px; }
-    .final-cta .hero-actions { justify-content:center; }
-
-    /* ===================================================================
-       FOOTER
-    =================================================================== */
-    footer { border-top:1px solid var(--border); padding-block:50px 36px; margin-top:30px; }
-    .foot-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px; }
-    .foot-grid h5 { font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint); margin-bottom:16px; }
-    .foot-grid a { display:block; color:var(--text-dim); font-size:.92rem; margin-bottom:10px; transition:color .25s; }
-    .foot-grid a:hover { color:var(--text); }
-    .foot-grid .brand { margin-bottom:14px; }
-    .foot-grid .blurb { color:var(--text-dim); font-size:.92rem; max-width:280px; }
-    .foot-bottom { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; border-top:1px solid var(--border); padding-top:24px; color:var(--text-faint); font-size:.86rem; }
-
-    /* ===================================================================
-       REVEAL ANIMATION
-    =================================================================== */
-    [data-reveal] { opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
-    [data-reveal].in { opacity:1; transform:none; }
-    [data-reveal][data-delay="1"]{ transition-delay:.08s; }
-    [data-reveal][data-delay="2"]{ transition-delay:.16s; }
-    [data-reveal][data-delay="3"]{ transition-delay:.24s; }
-    [data-reveal][data-delay="4"]{ transition-delay:.32s; }
-
-    @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1);} 50%{ opacity:.45; transform:scale(1.25);} }
-    @keyframes bob { 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-12px);} }
-    @keyframes blobFloat1 { 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(50px,40px) scale(1.12);} }
-    @keyframes blobFloat2 { 0%,100%{ transform:translate(0,0) scale(1);} 50%{ transform:translate(-50px,30px) scale(1.1);} }
-
-    /* ===================================================================
-       RESPONSIVE
-    =================================================================== */
-    @media (max-width: 980px) {
-      .hero-grid { grid-template-columns:1fr; gap:54px; }
-      .hero { padding-top:130px; text-align:center; }
-      .hero p.sub { margin-inline:auto; }
-      .hero-actions, .hero-meta { justify-content:center; }
-      .app-window { transform:none; animation:none; }
-      .float-tag.t1{ left:2%; } .float-tag.t2{ right:2%; }
-      .feature-grid, .steps, .quotes, .price-grid { grid-template-columns:1fr; }
-      .card.wide { grid-column:span 1; }
-      .split { grid-template-columns:1fr; gap:34px; }
-      .foot-grid { grid-template-columns:1fr 1fr; gap:30px; }
-
-      /* --- mobile dropdown menu --- */
-      .menu-btn { display:flex; }
-      .nav-cta .btn-ghost { display:none; }           /* hide "Sign in" on mobile */
-      .nav-links {
-        position:absolute; top:100%; left:0; right:0;
-        flex-direction:column; align-items:stretch; gap:0;
-        background:rgba(7,7,13,.97); backdrop-filter:blur(18px) saturate(160%);
-        border-bottom:1px solid var(--border);
-        padding:6px 24px 16px;
-        max-height:0; overflow:hidden; opacity:0; pointer-events:none;
-        transition:max-height .35s var(--ease), opacity .3s, padding .35s;
-      }
-      .nav-links.open { max-height:320px; opacity:1; pointer-events:auto; }
-      .nav-links a { padding:14px 4px; font-size:1.02rem; border-bottom:1px solid var(--border); }
-      .nav-links a:last-child { border-bottom:none; }
-      .nav-links a::after { display:none; }
-      .menu-btn.open svg { transform:rotate(90deg); }
-      .menu-btn svg { transition:transform .3s var(--ease); }
-    }
-    @media (max-width: 640px) {
-      /* keep the app-window titlebar from overflowing on phones */
-      .titlebar { flex-wrap:wrap; row-gap:8px; }
-      .tb-title { display:none; }
-      .tb-status { margin-left:auto; flex-wrap:wrap; justify-content:flex-end; }
-    }
-    @media (max-width: 560px) {
-      .container { padding-inline:18px; }
-      .app-body { grid-template-columns:1fr 1fr; }
-      .script-panel { grid-column:span 2; order:-1; }   /* teleprompter above the camera previews */
-      .pane { aspect-ratio:9/16; }
-      .stat-row { grid-template-columns:1fr; }
-      .foot-grid { grid-template-columns:1fr; }
-      .float-tag { display:none; }
-    }
-    @media (max-width: 440px) {
-      .hero { padding-top:148px; }
-      .hero h1 { font-size:clamp(2.1rem,9vw,2.6rem); }
-      .hero-actions { flex-direction:column; align-items:stretch; }
-      .hero-actions .btn { width:100%; }
-      .hero-meta { flex-direction:column; gap:10px; }
-      .nav-cta .btn-primary { padding:10px 16px; font-size:.9rem; }
-      .app-body { grid-template-columns:1fr; }
-      .script-panel { grid-column:span 1; }
-      .tb-status .chip { font-size:.62rem; padding:4px 8px; }
-      .price-single .amt { font-size:2.8rem; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
-    }
-  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SyncDrop",
+  "url": "https://www.syncdrop.in/",
+  "description": "AI products and services studio specialising in lip-synced video generation, speech and vision systems, and custom software.",
+  "email": "hello@syncdrop.ai",
+  "sameAs": ["https://github.com/rohitsainier"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Lip Sync", "description": "Video plus audio in, perfectly lip-synced video out." } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Text-to-Speech" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Speech-to-Text" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Voice Cloning" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Virtual Makeup and AR Beauty" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Analytics" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Video Generation" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Editing and Creator Tools" } }
+  ]
+}
+</script>
 </head>
+
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-  <!-- ============================ NAVBAR ============================ -->
-  <header class="nav" id="nav">
-    <div class="container nav-inner">
-      <a href="#" class="brand">
-        <svg class="mark" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="cs-grad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#9C7BFF"/><stop offset=".55" stop-color="#6C5CE7"/><stop offset="1" stop-color="#38BDF8"/>
-            </linearGradient>
-          </defs>
-          <rect x="87" y="87" width="850" height="850" rx="190" fill="url(#cs-grad)"/>
-          <path fill="#fff" fill-rule="evenodd" d="M332,368 h360 a75,75 0 0 1 75,75 v137 a75,75 0 0 1 -75,75 h-360 a75,75 0 0 1 -75,-75 v-137 a75,75 0 0 1 75,-75 z M443,257 h137 a75,75 0 0 1 75,75 v360 a75,75 0 0 1 -75,75 h-137 a75,75 0 0 1 -75,-75 v-360 a75,75 0 0 1 75,-75 z"/>
-        </svg>
-        Syncdrop
-      </a>
-      <nav class="nav-links" id="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how">How it works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <div class="nav-cta">
-        <a href="#pricing" class="btn btn-ghost" style="padding:11px 20px;">Sign in</a>
-        <a href="#cta" class="btn btn-primary" style="padding:11px 22px;">Download</a>
-        <button class="menu-btn" aria-label="Menu">
-          <svg viewBox="0 0 24 24" width="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
+<!-- ============ background layers ============ -->
+<div class="bg-layer bg-glow" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="bg-layer bg-grid" aria-hidden="true"></div>
+<div class="bg-layer bg-grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"></div>
 
-  <!-- ============================= HERO ============================= -->
+<!-- ============ nav ============ -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="logo" href="#top" aria-label="SyncDrop — home">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2dd4bf" />
+            <stop offset=".5" stop-color="#22d3ee" />
+            <stop offset="1" stop-color="#a855f7" />
+          </linearGradient>
+        </defs>
+        <path d="M16 3c5.9 6.8 9.2 11.3 9.2 15.2a9.2 9.2 0 0 1-18.4 0C6.8 14.3 10.1 9.8 16 3Z" fill="url(#lg)" />
+        <g fill="#06060b">
+          <rect x="11.5" y="16.4" width="2.1" height="5.4" rx="1.05" />
+          <rect x="14.95" y="13.2" width="2.1" height="11.6" rx="1.05" />
+          <rect x="18.4" y="17.4" width="2.1" height="4.2" rx="1.05" />
+        </g>
+      </svg>
+      <span><b>Sync</b>Drop</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#work">Portfolio</a>
+      <a href="#tech">Tech</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn btn--primary nav__cta" href="#contact">Start a project</a>
+
+    <button class="burger" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <i></i><i></i><i></i>
+    </button>
+  </div>
+</header>
+
+<div class="mobile" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#how">How It Works</a>
+  <a href="#work">Portfolio</a>
+  <a href="#tech">Tech</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn--primary" href="#contact">Start a project</a>
+</div>
+
+<main class="page" id="main">
+  <span id="top"></span>
+
+  <!-- ============ hero ============ -->
   <section class="hero">
-    <div class="grid-overlay"></div>
-    <div class="blob" style="width:520px;height:520px;background:#6C5CE7;top:-120px;left:-120px;animation:blobFloat1 14s ease-in-out infinite;"></div>
-    <div class="blob" style="width:480px;height:480px;background:#38BDF8;top:120px;right:-160px;opacity:.35;animation:blobFloat2 17s ease-in-out infinite;"></div>
+    <div class="hero__bars" aria-hidden="true"></div>
 
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow" data-reveal>AI product for creators · macOS · iPhone · iPad</span>
-        <h1 data-reveal data-delay="1">
-          <span class="line">One take.</span>
-          <span class="line grad-text">Every aspect ratio.</span>
-        </h1>
-        <p class="sub" data-reveal data-delay="2">
-          CreatorSync records <b>landscape&nbsp;16:9</b> and <b>portrait&nbsp;9:16</b> at the same time — while a teleprompter scrolls to <i>your voice</i>, advancing only on the words you actually speak. Never a timer.
+    <div class="wrap hero__grid">
+      <div>
+        <span class="eyebrow rv">AI products &amp; services studio</span>
+        <h1 class="rv" style="--d:60ms">Any voice.<br />Any face.<br /><em>Perfectly in sync.</em></h1>
+        <p class="hero__sub rv" style="--d:130ms">
+          Hand our lip-sync engine a video and an audio track. You get back a cut where every
+          phoneme lands on the right frame — any language, any speaker. Speech, vision, and the
+          software around them: we build the whole stack, and we ship it.
         </p>
-        <div class="hero-actions" data-reveal data-delay="3">
-          <a href="#cta" class="btn btn-primary">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 1.5c.1 1.1-.3 2.2-1 3-.7.9-1.9 1.5-3 1.4-.1-1.1.4-2.2 1-3 .7-.8 1.9-1.4 3-1.4zM20 17.2c-.5 1.2-.8 1.7-1.4 2.7-1 1.5-2.3 3.3-4 3.3-1.5 0-1.9-1-4-1-2 0-2.5 1-4 1-1.7 0-3-1.7-4-3.1-2.6-4-2.9-8.6-1.3-11 1.1-1.8 3-2.8 4.7-2.8 1.8 0 2.9 1 4.3 1 1.4 0 2.2-1 4.3-1 1.5 0 3.1.8 4.2 2.2-3.7 2-3.1 7.3.9 8.7z"/></svg>
-            Download for Mac
+
+        <div class="hero__cta rv" style="--d:200ms">
+          <a class="btn btn--primary btn--lg" href="#contact">
+            Start a project
+            <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5.5-6 6 6-6 6" /></svg>
           </a>
-          <a href="#demo" class="btn btn-ghost">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg>
-            Watch it scroll
-          </a>
+          <a class="btn btn--ghost btn--lg" href="#work">See our work</a>
         </div>
-        <div class="hero-meta" data-reveal data-delay="4">
-          <span><span class="stars">★★★★★</span> 4.9 · 2,148 ratings</span>
-          <span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-            $4.99 once · no subscription
-          </span>
-          <span class="made-in"><span class="flag" aria-hidden="true"></span> Proudly made in India</span>
-        </div>
+
+        <p class="hero__note rv" style="--d:260ms">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+          Frame-accurate · 30+ languages · On-device or cloud
+        </p>
       </div>
 
-      <!-- ===== ANIMATED APP MOCKUP ===== -->
-      <div class="hero-mock" data-reveal data-delay="2" style="position:relative;">
-        <div class="float-tag t1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 1v22M8 5v14M16 5v14M4 9v6M20 9v6"/></svg>
-          Voice-paced scroll
-        </div>
-        <div class="float-tag t2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="var(--brand-2)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="11" r="3"/><path d="M7 19c1.5-2.5 8.5-2.5 10 0"/></svg>
-          Face tracking
-        </div>
+      <!-- the sync demo -->
+      <div class="demo-wrap rv" style="--d:180ms">
+        <span class="chip-float chip-float--a" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h3l2.5-7 4 14 3-9 2 4h3.5" /></svg>
+          Audio track
+        </span>
+        <span class="chip-float chip-float--b" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3" /><path d="M10 9.6 15 12l-5 2.4z" /></svg>
+          Synced output
+        </span>
 
-        <div class="app-window">
-          <div class="titlebar">
-            <div class="traffic"><i></i><i></i><i></i></div>
-            <span class="tb-title">CreatorSync</span>
-            <div class="tb-status">
-              <span class="chip rec"><span class="dot-rec"></span>REC <b id="recTime">00:00:00</b></span>
-              <span class="chip"><span class="meter"><i></i><i></i><i></i><i></i><i></i></span>Listening</span>
-              <span class="chip"><span class="dot-live"></span>Face</span>
-            </div>
+        <div class="demo" role="img" aria-label="An animated demonstration: an audio waveform scrolls under a playhead while a face mesh mouths the same audio in perfect sync.">
+          <div class="demo__chrome">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="demo__file">keynote_take_04 · en→es · lipsync.mp4</span>
+            <span class="demo__badge"><i></i>IN SYNC</span>
           </div>
 
-          <div class="app-body">
-            <!-- portrait -->
-            <div class="pane portrait">
-              <span class="pane-label">▯ Portrait 9:16</span>
-              <div class="scene">
-                <div class="figure">
-                  <div class="head"><div class="track"><i></i><i></i><i></i><i></i></div></div>
-                  <div class="torso"></div>
-                </div>
-                <div class="mic"><div class="cap"></div><div class="stem"></div></div>
-              </div>
-            </div>
+          <div class="demo__stage">
+            <svg class="face" viewBox="0 0 400 250" aria-hidden="true">
+              <defs>
+                <linearGradient id="faceG" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#2dd4bf" />
+                  <stop offset=".5" stop-color="#22d3ee" />
+                  <stop offset="1" stop-color="#a855f7" />
+                </linearGradient>
+                <radialGradient id="mouthG" cx=".5" cy=".3" r=".8">
+                  <stop offset="0" stop-color="#3b1330" />
+                  <stop offset="1" stop-color="#140714" />
+                </radialGradient>
+              </defs>
 
-            <!-- landscape -->
-            <div class="pane landscape">
-              <span class="pane-label">▭ Landscape 16:9</span>
-              <div class="scene">
-                <div class="figure">
-                  <div class="head"><div class="track"><i></i><i></i><i></i><i></i></div></div>
-                  <div class="torso"></div>
-                </div>
-                <div class="mic"><div class="cap"></div><div class="stem"></div></div>
-              </div>
-            </div>
+              <!-- detection brackets -->
+              <g class="face__brackets" stroke="url(#faceG)" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".62">
+                <path d="M96 44V22h24" />
+                <path d="M304 44V22h-24" />
+                <path d="M96 206v22h24" />
+                <path d="M304 206v22h-24" />
+              </g>
 
-            <!-- script -->
-            <div class="script-panel">
-              <div class="script-tabs">
-                <button class="active">Script</button>
-                <button>Settings</button>
-              </div>
-              <div class="script-scroll">
-                <p class="script-flow" id="scriptFlow"></p>
-              </div>
-              <div class="script-prog">
-                <div class="lbl" id="progPct">38% Completed</div>
-                <div class="bar"><i></i></div>
-              </div>
-            </div>
-          </div>
+              <!-- mesh -->
+              <g stroke="url(#faceG)" stroke-width=".8" fill="none" opacity=".22">
+                <path d="M148 88 200 80 252 88" />
+                <path d="M148 88 170 106 200 140 230 106 252 88" />
+                <path d="M170 106 200 140 160 158 200 176 240 158 200 140" />
+                <path d="M160 158 200 206 240 158" />
+                <path d="M126 124 170 106M126 124 160 158M126 124 140 168M140 168 200 206" />
+                <path d="M274 124 230 106M274 124 240 158M274 124 260 168M260 168 200 206" />
+                <path d="M148 88 126 124M252 88 274 124" />
+              </g>
 
-          <div class="app-controls">
-            <button>❚❚ Pause</button>
-            <button class="stop">■ Stop Recording</button>
-            <button>↺ Reset</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+              <!-- head -->
+              <path d="M200 26c54 0 90 38 90 92 0 54-40 100-90 100s-90-46-90-100c0-54 36-92 90-92Z"
+                    fill="rgba(255,255,255,.018)" stroke="url(#faceG)" stroke-width="1.5" />
 
-  <!-- ============================ LOGOS ============================ -->
-  <section class="logos" data-reveal>
-    <div class="container">
-      <p>Trusted by creators, educators &amp; teams</p>
-      <div class="logo-row">
-        <span>StudioCast</span><span>EduStream</span><span>PodLab</span><span>Frame&nbsp;House</span><span>ClipForge</span>
-      </div>
-    </div>
-  </section>
+              <!-- brows -->
+              <g id="brows" stroke="url(#faceG)" stroke-width="2.4" stroke-linecap="round" fill="none" opacity=".8">
+                <path d="M156 95c6-4.6 20-4.6 27 .4" />
+                <path d="M217 95.4c7-5 21-5 27-.4" />
+              </g>
 
-  <!-- =========================== FEATURES =========================== -->
-  <section id="features" class="pad">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Features</span>
-        <h2>Everything you need in <span class="grad-text">a single take</span></h2>
-        <p>Stop re-shooting for every platform. CreatorSync captures every format and keeps you perfectly framed while you focus on what you're saying.</p>
-      </div>
+              <!-- eyes -->
+              <g id="eyes">
+                <ellipse cx="170" cy="106" rx="12" ry="6" fill="none" stroke="url(#faceG)" stroke-width="1.6" />
+                <ellipse cx="230" cy="106" rx="12" ry="6" fill="none" stroke="url(#faceG)" stroke-width="1.6" />
+                <circle cx="170" cy="106" r="3.4" fill="#22d3ee" />
+                <circle cx="230" cy="106" r="3.4" fill="#22d3ee" />
+              </g>
 
-      <div class="feature-grid">
-        <div class="card wide" data-reveal>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="13" height="9" rx="2"/><rect x="16" y="3" width="6" height="15" rx="2"/></svg></div>
-          <h3>Dual-aspect recording</h3>
-          <p>Capture 16:9 for YouTube and 9:16 for Reels, Shorts &amp; TikTok simultaneously, from one performance. One take in, every aspect ratio out — exported and ready to post.</p>
-        </div>
-        <div class="card" data-reveal data-delay="1">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M8 5v14M16 5v14M4 9v6M20 9v6"/></svg></div>
-          <h3>Voice-paced teleprompter</h3>
-          <p>On-device speech recognition advances the script only when you say the next words. Pause, ad-lib, or slow down — it waits for you.</p>
-        </div>
-        <div class="card" data-reveal>
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4L19 6"/></svg></div>
-          <h3>Real-time highlighting</h3>
-          <p>Every spoken word lights up as you go, so your eyes always land on exactly the right line — even mid-sentence.</p>
-        </div>
-        <div class="card" data-reveal data-delay="1">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="11" r="3"/><path d="M7 19c1.5-2.5 8.5-2.5 10 0"/></svg></div>
-          <h3>Face tracking &amp; auto-reframe</h3>
-          <p>Vision keeps you centered in both crops as you move, so a single camera fills every frame without manual repositioning.</p>
-        </div>
-        <div class="card" data-reveal data-delay="2">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M2 12h20"/></svg></div>
-          <h3>On-device &amp; private</h3>
-          <p>Speech and tracking run locally with no cloud round-trips. Your scripts and footage never leave your Mac, iPhone or iPad.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+              <!-- nose -->
+              <path d="M200 122v20c0 3-2.6 4.6-6 4.4" fill="none" stroke="url(#faceG)" stroke-width="1.5" stroke-linecap="round" opacity=".8" />
 
-  <!-- ============================ DEMO ============================ -->
-  <section id="demo" class="pad" style="background:linear-gradient(180deg, transparent, var(--bg-soft), transparent);">
-    <div class="container">
-      <div class="split">
-        <div data-reveal>
-          <span class="eyebrow">Live demo</span>
-          <h2 style="font-size:clamp(1.9rem,4vw,2.8rem); margin:18px 0 16px;">It scrolls when <span class="grad-text">you speak</span> — not on a clock</h2>
-          <p style="color:var(--text-dim); font-size:1.05rem; margin-bottom:26px;">
-            Most teleprompters scroll on a fixed timer, so you race to keep up or wait awkwardly. CreatorSync listens, fuzzy-matches the words you say, and moves the line forward exactly in step with your delivery.
-          </p>
-          <div class="benefit-list">
-            <div class="benefit"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><div><h4>Natural pauses, zero panic</h4><p>Breathe, emphasize, or improvise — the prompter holds until you continue.</p></div></div>
-            <div class="benefit"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><div><h4>Mirror, size &amp; speed controls</h4><p>Flip for a beam-splitter rig, scale the type, and tune background opacity in a tap.</p></div></div>
-            <div class="benefit"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></span><div><h4>Multiple scripts on hand</h4><p>Switch takes instantly with progress tracked per script.</p></div></div>
-          </div>
-        </div>
-        <div data-reveal data-delay="1" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px;">
-          <div class="script-tabs" style="margin-bottom:16px;border:none;padding:0;">
-            <button class="active" style="flex:0 0 auto;padding:8px 18px;">Main Script</button>
-          </div>
-          <p class="script-flow" id="scriptFlow2" style="font-size:1.05rem;line-height:1.7;animation:none;color:#4a4d63;"></p>
-          <div class="script-prog" style="border:none;padding:18px 0 0;">
-            <div class="lbl">Listening · matched in real time</div>
-            <div class="bar"><i style="animation:none;width:38%;"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+              <!-- jaw + mouth -->
+              <g id="jaw">
+                <path id="mouth" d="M170 176 Q200 174.6 230 176 Q200 177.7 170 176 Z" fill="url(#mouthG)" stroke="url(#faceG)" stroke-width="1.8" stroke-linejoin="round" />
+                <ellipse id="teeth" cx="200" cy="176" rx="18" ry="0.4" fill="#ffffff" opacity="0" />
+              </g>
 
-  <!-- ========================= HOW IT WORKS ========================= -->
-  <section id="how" class="pad">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">How it works</span>
-        <h2>From script to post in <span class="grad-text">three steps</span></h2>
-        <p>No editing timeline gymnastics. Paste, press record, and walk away with platform-ready clips.</p>
-      </div>
-      <div class="steps">
-        <div class="step" data-reveal><div class="num">01</div><h3>Paste your script</h3><p>Drop in your words, size the text, and pick a take. Set mirror and speed if you're on a rig.</p></div>
-        <div class="step" data-reveal data-delay="1"><div class="num">02</div><h3>Hit record &amp; talk</h3><p>The prompter follows your voice while CreatorSync captures portrait and landscape together, keeping your face framed.</p></div>
-        <div class="step" data-reveal data-delay="2"><div class="num">03</div><h3>Export everywhere</h3><p>Get a 16:9 and a 9:16 file out of one take — ready for YouTube, Reels, Shorts and TikTok.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =========================== BENEFITS =========================== -->
-  <section class="pad" style="background:linear-gradient(180deg, transparent, var(--bg-soft), transparent);">
-    <div class="container split">
-      <div class="stat-card" data-reveal>
-        <div class="stat-row">
-          <div class="stat"><div class="big">2×</div><div class="lbl">aspect ratios per take</div></div>
-          <div class="stat"><div class="big">0</div><div class="lbl">re-shoots for formats</div></div>
-          <div class="stat"><div class="big">100%</div><div class="lbl">on-device processing</div></div>
-          <div class="stat"><div class="big">4.9★</div><div class="lbl">average rating</div></div>
-        </div>
-      </div>
-      <div data-reveal data-delay="1">
-        <span class="eyebrow">Why creators switch</span>
-        <h2 style="font-size:clamp(1.9rem,4vw,2.7rem);margin:18px 0 16px;">Shoot once. <span class="grad-text">Publish everywhere.</span></h2>
-        <p style="color:var(--text-dim);font-size:1.05rem;">The old way meant filming a video, then re-cropping or re-recording for every platform — and fighting a prompter that never matched your pace. CreatorSync collapses all of that into one confident take.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================= TESTIMONIALS ========================= -->
-  <section class="pad">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Loved by creators</span>
-        <h2>Real takes, <span class="grad-text">real time saved</span></h2>
-      </div>
-      <div class="quotes">
-        <div class="quote" data-reveal><div class="stars">★★★★★</div><p>"The voice-paced scroll is magic. I stopped racing the prompter and my delivery finally sounds like me."</p><div class="who"><span class="av">MJ</span><div><b>Maya Jensen</b><br><small>YouTuber, 480K subs</small></div></div></div>
-        <div class="quote" data-reveal data-delay="1"><div class="stars">★★★★★</div><p>"Portrait and landscape in one take saved my workflow. One record, Reels and the long-form both done."</p><div class="who"><span class="av">DR</span><div><b>Diego Ramos</b><br><small>Course creator</small></div></div></div>
-        <div class="quote" data-reveal data-delay="2"><div class="stars">★★★★★</div><p>"Face tracking keeps me centered even when I gesture a lot. It feels like having a camera operator."</p><div class="who"><span class="av">AL</span><div><b>Aisha Lin</b><br><small>Podcast host</small></div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ PRICING ============================ -->
-  <section id="pricing" class="pad" style="background:linear-gradient(180deg, transparent, var(--bg-soft), transparent);">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">Pricing</span>
-        <h2>One price. <span class="grad-text">Pay once, yours forever.</span></h2>
-        <p>No subscriptions, no watermarks, no cloud uploads. Buy CreatorSync once and own it.</p>
-      </div>
-      <div class="price-single">
-        <div class="price featured" data-reveal>
-          <span class="badge">ONE-TIME PURCHASE</span>
-          <h3>CreatorSync</h3>
-          <div class="amt">$4.99<span> once</span></div>
-          <div class="desc">Everything included. No recurring fees, ever.</div>
-          <ul>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Dual-aspect recording — 16:9 + 9:16 in one take</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Voice-paced teleprompter with real-time highlighting</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Face tracking &amp; auto-reframe</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Up to 4K recording, unlimited scripts</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>macOS, iPhone &amp; iPad — fully on-device &amp; private</li>
-          </ul>
-          <a href="#cta" class="btn btn-primary">Buy CreatorSync · $4.99</a>
-          <p style="text-align:center;color:var(--text-faint);font-size:.82rem;margin-top:14px;">One-time payment · Free updates · No subscription</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== FAQ ============================== -->
-  <section id="faq" class="pad">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <span class="eyebrow">FAQ</span>
-        <h2>Questions, <span class="grad-text">answered</span></h2>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item" data-reveal open>
-          <summary>How does the teleprompter follow my voice?<span class="ico"><svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <div class="ans">On-device speech recognition transcribes what you say and fuzzy-matches it against your script. The line only advances when you actually speak the next words — so pauses, ad-libs and emphasis never throw it off.</div>
-        </details>
-        <details class="faq-item" data-reveal>
-          <summary>Can it really record two aspect ratios at once?<span class="ico"><svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <div class="ans">Yes. From a single performance CreatorSync writes both a 16:9 landscape file and a 9:16 portrait file, each framed around your face — no re-shooting or re-cropping later.</div>
-        </details>
-        <details class="faq-item" data-reveal>
-          <summary>Which devices are supported?<span class="ico"><svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <div class="ans">CreatorSync is a universal app for macOS, iPhone and iPad. Your scripts and settings stay consistent across devices.</div>
-        </details>
-        <details class="faq-item" data-reveal>
-          <summary>Is my data sent to the cloud?<span class="ico"><svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <div class="ans">No. Speech recognition and face tracking run entirely on-device, and recordings are saved locally. Nothing leaves your machine unless you choose to share it.</div>
-        </details>
-        <details class="faq-item" data-reveal>
-          <summary>Do I need a special prompter rig?<span class="ico"><svg viewBox="0 0 24 24" width="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-          <div class="ans">Not at all — it works great on your screen as-is. If you use a beam-splitter rig, just enable Mirror mode and you're set.</div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================== FINAL CTA ========================== -->
-  <section id="cta" class="pad final-cta">
-    <div class="container">
-      <div class="box" data-reveal>
-        <div class="blob" style="width:400px;height:400px;background:#6C5CE7;top:-150px;left:10%;opacity:.4;"></div>
-        <div class="blob" style="width:360px;height:360px;background:#38BDF8;bottom:-150px;right:10%;opacity:.3;"></div>
-        <div style="position:relative;z-index:2;">
-          <h2>Your next take is <span class="grad-text">already everywhere</span></h2>
-          <p>Download CreatorSync and turn one confident performance into portrait and landscape clips — paced perfectly by your voice.</p>
-          <div class="hero-actions">
-            <a href="#" class="btn btn-primary">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 1.5c.1 1.1-.3 2.2-1 3-.7.9-1.9 1.5-3 1.4-.1-1.1.4-2.2 1-3 .7-.8 1.9-1.4 3-1.4zM20 17.2c-.5 1.2-.8 1.7-1.4 2.7-1 1.5-2.3 3.3-4 3.3-1.5 0-1.9-1-4-1-2 0-2.5 1-4 1-1.7 0-3-1.7-4-3.1-2.6-4-2.9-8.6-1.3-11 1.1-1.8 3-2.8 4.7-2.8 1.8 0 2.9 1 4.3 1 1.4 0 2.2-1 4.3-1 1.5 0 3.1.8 4.2 2.2-3.7 2-3.1 7.3.9 8.7z"/></svg>
-              Download for Mac
-            </a>
-            <a href="#" class="btn btn-ghost">Get it on iPhone &amp; iPad</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================ FOOTER ============================ -->
-  <footer>
-    <div class="container">
-      <div class="foot-grid">
-        <div>
-          <a href="#" class="brand">
-            <svg class="mark" viewBox="0 0 1024 1024" aria-hidden="true">
-              <rect x="87" y="87" width="850" height="850" rx="190" fill="url(#cs-grad)"/>
-              <path fill="#fff" fill-rule="evenodd" d="M332,368 h360 a75,75 0 0 1 75,75 v137 a75,75 0 0 1 -75,75 h-360 a75,75 0 0 1 -75,-75 v-137 a75,75 0 0 1 75,-75 z M443,257 h137 a75,75 0 0 1 75,75 v360 a75,75 0 0 1 -75,75 h-137 a75,75 0 0 1 -75,-75 v-360 a75,75 0 0 1 75,-75 z"/>
+              <!-- landmarks -->
+              <g fill="#2dd4bf" opacity=".6">
+                <circle cx="148" cy="88" r="1.7" /><circle cx="200" cy="80" r="1.7" /><circle cx="252" cy="88" r="1.7" />
+                <circle cx="170" cy="106" r="1.7" /><circle cx="230" cy="106" r="1.7" /><circle cx="200" cy="140" r="1.7" />
+                <circle cx="160" cy="158" r="1.7" /><circle cx="240" cy="158" r="1.7" /><circle cx="200" cy="176" r="1.7" />
+                <circle cx="200" cy="206" r="1.7" /><circle cx="126" cy="124" r="1.7" /><circle cx="274" cy="124" r="1.7" />
+                <circle cx="140" cy="168" r="1.7" /><circle cx="260" cy="168" r="1.7" />
+              </g>
             </svg>
-            Syncdrop
-          </a>
-          <p class="blurb"><b>CreatorSync</b> by Syncdrop — an AI product for creators. One take, every aspect ratio, paced by your voice, for macOS, iPhone and iPad.</p>
-          <span class="made-in" style="margin-top:16px;"><span class="flag" aria-hidden="true"></span> Proudly made in India</span>
+
+            <div class="demo__scan" aria-hidden="true"></div>
+            <span class="demo__tag">FACE MESH · 468 PTS</span>
+            <span class="demo__tag demo__tag--r">AUDIO · 48 kHz</span>
+          </div>
+
+          <div class="demo__wave"><canvas id="waveCanvas"></canvas></div>
+
+          <div class="demo__meta">
+            <span id="demoTime">00:00</span>
+            <span class="demo__track"><i id="demoFill"></i></span>
+            <span>00:12</span>
+          </div>
         </div>
-        <div><h5>Product</h5><a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#demo">Demo</a></div>
-        <div><h5>Company</h5><a href="#">About</a><a href="#">Blog</a><a href="#">Careers</a><a href="#">Press</a></div>
-        <div><h5>Support</h5><a href="#faq">FAQ</a><a href="#">Contact</a><a href="#">Privacy</a><a href="#">Terms</a></div>
-      </div>
-      <div class="foot-bottom">
-        <span>© 2026 Syncdrop. CreatorSync is a product of Syncdrop. All rights reserved.</span>
-        <span>An AI product for creators · Proudly made in India 🇮🇳</span>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <!-- ============================ SCRIPT ============================ -->
-  <script>
-    /* --- Nav scroll state --- */
-    var nav = document.getElementById('nav');
-    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 20); };
-    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+  <!-- ============ services ============ -->
+  <section class="band" id="services">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">What we do</span>
+        <h2>Nine capabilities.<br />One studio.</h2>
+        <p>Lip sync is where we go deepest. Everything else exists because real products need
+          more than one model — and someone has to make them work together.</p>
+      </div>
 
-    /* --- Mobile menu toggle --- */
-    (function () {
-      var btn = document.querySelector('.menu-btn');
-      var links = document.querySelector('.nav-links');
-      if (!btn || !links) return;
-      var setOpen = function (open) { links.classList.toggle('open', open); btn.classList.toggle('open', open); btn.setAttribute('aria-expanded', open); };
-      btn.setAttribute('aria-controls', 'nav-links'); btn.setAttribute('aria-expanded', 'false');
-      btn.addEventListener('click', function () { setOpen(!links.classList.contains('open')); });
-      links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
-      window.addEventListener('resize', function () { if (window.innerWidth > 980) setOpen(false); });
-    })();
+      <div class="bento stagger">
 
-    /* --- Reveal on scroll --- */
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+        <!-- 01 — flagship -->
+        <article class="card svc svc--feature rv">
+          <span class="flag">Flagship</span>
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 21.2A9.2 9.2 0 1 1 11 2.8" />
+              <path d="M5 13.4c1.5 2 4 2 5.5 0" />
+              <circle cx="6.4" cy="9" r="1" fill="currentColor" stroke="none" />
+              <path d="M15.5 8.4v7.2M18.5 5.6v12.8M21.5 9.8v4.4" />
+            </svg>
+          </div>
+          <h3>AI Lip Sync</h3>
+          <p>
+            Give us a video and an audio track. We return the same footage with the mouth
+            re-timed to the new audio — every phoneme on the right frame, teeth, jaw and micro
+            expressions included. Dub a film into eight languages. Fix a bad take without a
+            reshoot. Drive a synthetic presenter from a script. It holds up at 4K, and it holds
+            up in slow motion.
+          </p>
+          <ul class="svc__chips">
+            <li>Frame-accurate</li>
+            <li>30+ languages</li>
+            <li>4K &amp; 60fps</li>
+            <li>Batch API</li>
+            <li>Identity-preserving</li>
+          </ul>
+          <div class="eq" aria-hidden="true"></div>
+          <span class="svc__no">01</span>
+        </article>
 
-    /* --- Card spotlight follows cursor --- */
-    document.querySelectorAll('.card').forEach(function (c) {
-      c.addEventListener('pointermove', function (e) {
-        var r = c.getBoundingClientRect();
-        c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-        c.style.setProperty('--my', (e.clientY - r.top) + 'px');
-      });
-    });
+        <!-- 02 -->
+        <article class="card svc rv">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3.8 9.6h3L11 6.3v11.4l-4.2-3.3h-3a.9.9 0 0 1-.9-.9v-3a.9.9 0 0 1 .9-.9Z" />
+              <path d="M15 9.2a4.2 4.2 0 0 1 0 5.6" />
+              <path d="M17.9 6.3a8.2 8.2 0 0 1 0 11.4" />
+            </svg>
+          </div>
+          <h3>Text-to-Speech</h3>
+          <p>Voices that breathe. Expressive multi-language synthesis with real control over pace, emphasis and emotion — not a robot reading a paragraph.</p>
+          <span class="svc__no">02</span>
+        </article>
 
-    /* --- Ticking REC timer in the mockup --- */
-    (function () {
-      var el = document.getElementById('recTime');
-      if (!el) return;
-      var s = 165; // start ~ 00:02:45 like the reference
-      var pad = function (n) { return n < 10 ? '0' + n : '' + n; };
-      setInterval(function () {
-        s++;
-        el.textContent = '00:' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60);
-      }, 1000);
-    })();
+        <!-- 03 -->
+        <article class="card svc rv">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8.4" y="2.6" width="7.2" height="11.2" rx="3.6" />
+              <path d="M5.4 11.6a6.6 6.6 0 0 0 13.2 0" />
+              <path d="M12 18.2v3M8.6 21.2h6.8" />
+            </svg>
+          </div>
+          <h3>Speech-to-Text</h3>
+          <p>Transcription that survives production. Word-level timestamps, speaker labels, noisy rooms. Runs on-device when the audio can't leave the building.</p>
+          <span class="svc__no">03</span>
+        </article>
 
-    /* --- Build word-by-word script that highlights in sequence --- */
-    var SCRIPT = ("Welcome to CreatorSync. The app that makes your recording professional and effortless. " +
-      "It automatically scrolls as you speak, highlights the text in real time, and keeps you focused on your delivery. " +
-      "Perfect for videos, presentations, podcasts, and more. Let's create something amazing today.").split(' ');
+        <!-- 04 -->
+        <article class="card svc rv">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9.6" cy="12" r="7.2" />
+              <path d="M6.8 10.6v2.8M9.6 8.4v7.2M12.4 10.2v3.6" />
+              <path d="M15.4 5.2a7.3 7.3 0 0 1 0 13.6" />
+            </svg>
+          </div>
+          <h3>Voice Cloning</h3>
+          <p>Thirty seconds of clean audio is enough. Clone a voice, then drive it with TTS in a language the speaker never recorded. Consent workflows included.</p>
+          <span class="svc__no">04</span>
+        </article>
 
-    function buildFlow(elId) {
-      var host = document.getElementById(elId);
-      if (!host) return null;
-      return SCRIPT.map(function (w) {
-        var s = document.createElement('w'); s.textContent = w + ' '; host.appendChild(s); return s;
-      });
-    }
+        <!-- 05 -->
+        <article class="card svc rv">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3.6 20.4 11.4 12.6" />
+              <path d="M10.6 11.2 13.9 14.5l3.4-3.4a2.6 2.6 0 0 0 0-3.7l-1-1a2.6 2.6 0 0 0-3.7 0Z" />
+              <path d="m18.6 15.2.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z" />
+            </svg>
+          </div>
+          <h3>Virtual Makeup</h3>
+          <p>Photoreal lipstick, foundation, lashes and blush on photos, recorded video and the live camera. Real-time on the device, no round trip to a server.</p>
+          <span class="svc__no">05</span>
+        </article>
 
-    function runHighlight(words, pctEl) {
-      if (!words) return;
-      var i = 0, n = words.length;
-      setInterval(function () {
-        words.forEach(function (w, k) {
-          w.classList.toggle('spoken', k < i);
-          w.classList.toggle('now', k === i);
-        });
-        if (pctEl) pctEl.textContent = Math.round((i / n) * 100) + '% Completed';
-        i = (i + 1) % (n + 6); // brief pause at the end before looping
-      }, 480);
-    }
+        <!-- 06 -->
+        <article class="card svc rv">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.6" y="4.4" width="18.8" height="15.2" rx="2.8" />
+              <rect x="5.8" y="7.6" width="6.6" height="6.6" rx="1.2" />
+              <path d="M15 9.4h3.6M15 12.4h2.4M6.4 17h9.2" />
+            </svg>
+          </div>
+          <h3>Video Analytics</h3>
+          <p>Detect, track, count, understand. Faces, objects, zones and events turned into structured data you can query — from one camera or a thousand hours of archive.</p>
+          <span class="svc__no">06</span>
+        </article>
 
-    runHighlight(buildFlow('scriptFlow'), document.getElementById('progPct'));
-    runHighlight(buildFlow('scriptFlow2'), null);
-  </script>
+        <!-- 07 -->
+        <article class="card svc rv">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.6" y="6" width="15.6" height="13.4" rx="2.8" />
+              <path d="M8.8 10.6 13.4 12.7 8.8 14.8Z" />
+              <path d="m19.6 2.4.8 2.1 2.1.8-2.1.8-.8 2.1-.8-2.1-2.1-.8 2.1-.8Z" />
+            </svg>
+          </div>
+          <h3>AI Video Generation</h3>
+          <p>Script in, footage out. Generate scenes, b-roll and full presenter videos from a prompt — then lip-sync them to the voice you actually want.</p>
+          <span class="svc__no">07</span>
+        </article>
+
+        <!-- 08 -->
+        <article class="card svc rv">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5.4" y="2.4" width="13.2" height="19.2" rx="3.2" />
+              <path d="M10.6 18.8h2.8" />
+              <path d="M10.4 8.4 8 11l2.4 2.6M13.6 8.4 16 11l-2.4 2.6" />
+            </svg>
+          </div>
+          <h3>Mobile App Development</h3>
+          <p>Native iOS and macOS in SwiftUI, cross-platform when it earns its keep. Shipped to the App Store — not parked in a demo folder.</p>
+          <span class="svc__no">08</span>
+        </article>
+
+        <!-- 09 -->
+        <article class="card svc rv">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.6" y="5.2" width="8.4" height="5" rx="1.6" />
+              <rect x="12.6" y="5.2" width="8.8" height="5" rx="1.6" />
+              <rect x="2.6" y="13.8" width="6" height="5" rx="1.6" />
+              <rect x="10.2" y="13.8" width="11.2" height="5" rx="1.6" />
+              <path d="M8 2.6v18.8" />
+            </svg>
+          </div>
+          <h3>Video Editing &amp; Creator Tools</h3>
+          <p>Automated cuts, face-tracked reframing, teleprompter workflows, one take exported to every aspect ratio. The boring half of editing, handled.</p>
+          <span class="svc__no">09</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ how it works ============ -->
+  <section class="band" id="how">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">How lip sync works</span>
+        <h2>Three steps.<br />No reshoot.</h2>
+        <p>Drop in the footage, drop in the audio, collect the render. The hard part —
+          phoneme alignment, identity preservation, temporal smoothing — is ours.</p>
+      </div>
+
+      <ol class="steps stagger">
+        <div class="steps__line" aria-hidden="true"><i></i></div>
+
+        <li class="step card rv">
+          <div class="step__n">01</div>
+          <div class="step__art" aria-hidden="true">
+            <svg viewBox="0 0 120 76" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="8" width="104" height="60" rx="8" />
+              <circle cx="60" cy="32" r="11" />
+              <path d="M41 60c3.6-8.4 11-13 19-13s15.4 4.6 19 13" />
+            </svg>
+          </div>
+          <h3>Upload your video</h3>
+          <p>Any framing, any resolution. We find and track the face, frame by frame.</p>
+        </li>
+
+        <li class="step card rv">
+          <div class="step__n">02</div>
+          <div class="step__art" aria-hidden="true">
+            <svg viewBox="0 0 120 76" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+              <path d="M12 38h8M30 24v28M42 14v48M54 30v16M66 18v40M78 26v24M90 34v8M100 38h8" />
+            </svg>
+          </div>
+          <h3>Add the audio</h3>
+          <p>A recording, a TTS render, a cloned voice. New language, new take — your call.</p>
+        </li>
+
+        <li class="step card rv">
+          <div class="step__n">03</div>
+          <div class="step__art" aria-hidden="true">
+            <svg viewBox="0 0 120 76" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="8" width="104" height="60" rx="8" />
+              <path d="M44 38.5 55.5 50 78 27" />
+              <path d="m98 12 1.6 4.4 4.4 1.6-4.4 1.6L98 24l-1.6-4.4-4.4-1.6 4.4-1.6Z" />
+            </svg>
+          </div>
+          <h3>Get the synced cut</h3>
+          <p>Same face, same lighting, new mouth. Delivered as a file or straight through the API.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ portfolio ============ -->
+  <section class="band" id="work">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Built by us</span>
+        <h2>Shipped, not slideware.</h2>
+        <p>Nine products in the wild — macOS, iOS, Rust, Chrome. Same team, same standard,
+          whether it is our name on it or yours.</p>
+      </div>
+
+      <div class="works stagger">
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/creatorcut/" target="_blank" rel="noopener noreferrer" style="--a:#2dd4bf;--b:#22d3ee">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1.6" y="7" width="13" height="9" rx="2" />
+              <rect x="12.4" y="3.4" width="9" height="17.2" rx="2" />
+              <circle cx="17" cy="8.4" r="1.1" fill="currentColor" stroke="none" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>CreatorCut</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>Record once, get 9:16 and 16:9 automatically. A teleprompter that follows your voice, face-tracked smart crop, on-device speech recognition.</p>
+            <ul class="tags"><li>macOS</li><li>iOS</li><li>SwiftUI</li><li>Vision</li><li>Speech</li></ul>
+          </div>
+        </a>
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/vista/" target="_blank" rel="noopener noreferrer" style="--a:#8b5cf6;--b:#6366f1">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2.4 12S6 5.8 12 5.8 21.6 12 21.6 12 18 18.2 12 18.2 2.4 12 2.4 12Z" />
+              <circle cx="12" cy="12" r="2.9" />
+              <path d="M3.6 20.4 20.4 3.6" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>Vista</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>A macOS browser that stays invisible to screen share. Zoom, Meet and Teams simply do not see the window.</p>
+            <ul class="tags"><li>macOS</li><li>SwiftUI</li><li>WebKit</li></ul>
+          </div>
+        </a>
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/mechkeys/" target="_blank" rel="noopener noreferrer" style="--a:#f59e0b;--b:#ef4444">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1.8" y="6" width="20.4" height="12" rx="2.6" />
+              <path d="M5.6 9.6h.01M9 9.6h.01M12.4 9.6h.01M15.8 9.6h.01M19 9.6h.01M5.6 12.9h.01M9 12.9h.01M12.4 12.9h.01M15.8 12.9h.01M19 12.9h.01" stroke-width="2.4" />
+              <path d="M8 15.9h8" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>MechKeys</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>Mechanical keyboard sound for any Mac keyboard. 47 sound packs, ultra-low latency, tuned so it never lags behind your fingers.</p>
+            <ul class="tags"><li>macOS</li><li>Swift</li><li>Core Audio</li></ul>
+          </div>
+        </a>
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/inkling/" target="_blank" rel="noopener noreferrer" style="--a:#f472b6;--b:#a855f7">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.6" y="3.6" width="18.8" height="16.8" rx="3" />
+              <path d="M7.4 12.6c0-2.6 1.5-4.2 3.4-4.6M13.4 12.6c0-2.6 1.5-4.2 3.4-4.6" />
+              <path d="M7.4 12.6h3.4v3.4H7.4zM13.4 12.6h3.4v3.4h-3.4z" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>Inkling</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>Beautiful quote cards generated by on-device AI. Nothing leaves the phone — privacy is the feature, not the footnote.</p>
+            <ul class="tags"><li>iOS</li><li>On-device AI</li><li>SwiftUI</li></ul>
+          </div>
+        </a>
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/flux-terminal/" target="_blank" rel="noopener noreferrer" style="--a:#22d3ee;--b:#10b981">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.4" y="4.2" width="19.2" height="15.6" rx="2.8" />
+              <path d="m7 10 2.6 2.4L7 14.8M12.6 15h4.4" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>Flux Terminal</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>A GPU-accelerated terminal with an AI copilot built in, and a cyberpunk streak it makes no apology for.</p>
+            <ul class="tags"><li>Rust</li><li>Tauri</li><li>GPU</li><li>LLM</li></ul>
+          </div>
+        </a>
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/bharatlink/" target="_blank" rel="noopener noreferrer" style="--a:#34d399;--b:#22d3ee">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="5.4" cy="6.4" r="2.8" /><circle cx="18.6" cy="6.4" r="2.8" />
+              <circle cx="12" cy="18" r="2.8" />
+              <path d="M8.2 6.4h7.6M6.8 8.8l3.8 6.8M17.2 8.8l-3.8 6.8" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>BharatLink</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>Sovereign peer-to-peer file transfer over QUIC and TLS 1.3. Your files go device to device. There is no server in the middle.</p>
+            <ul class="tags"><li>Rust</li><li>QUIC</li><li>TLS 1.3</li><li>P2P</li></ul>
+          </div>
+        </a>
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/quickkit/" target="_blank" rel="noopener noreferrer" style="--a:#60a5fa;--b:#6366f1">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.6" y="2.6" width="8" height="8" rx="2" />
+              <rect x="13.4" y="2.6" width="8" height="8" rx="2" />
+              <rect x="2.6" y="13.4" width="8" height="8" rx="2" />
+              <path d="m17.4 13.4-2.6 4.6h2.8l-1 3.6 4-5h-2.8l1.2-3.2Z" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>QuickKit</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>25+ developer and design tools living in the macOS menu bar. JSON, hashes, colours, UUIDs — one keystroke away, always offline.</p>
+            <ul class="tags"><li>macOS</li><li>SwiftUI</li><li>Menu bar</li></ul>
+          </div>
+        </a>
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/linkedcomment/" target="_blank" rel="noopener noreferrer" style="--a:#38bdf8;--b:#0ea5e9">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.4 14.4a2.6 2.6 0 0 1-2.6 2.6H8.2L3.6 20.6V5.6A2.6 2.6 0 0 1 6.2 3h11.6a2.6 2.6 0 0 1 2.6 2.6Z" />
+              <path d="m12 6.8 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1Z" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>LinkedComment</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>An AI comment generator for LinkedIn, as a Chrome extension. Bring your own model — OpenAI, Gemini, Claude or a local Ollama.</p>
+            <ul class="tags"><li>Chrome</li><li>JavaScript</li><li>LLM</li></ul>
+          </div>
+        </a>
+
+        <a class="card work rv" href="https://rohitsainier.github.io/pages/stylesnap/" target="_blank" rel="noopener noreferrer" style="--a:#a78bfa;--b:#ec4899">
+          <div class="work__art">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7.4 3.4H4.6a1.2 1.2 0 0 0-1.2 1.2v2.8M16.6 3.4h2.8a1.2 1.2 0 0 1 1.2 1.2v2.8" />
+              <path d="M7.4 20.6H4.6a1.2 1.2 0 0 1-1.2-1.2v-2.8" />
+              <path d="m12 8.6 7 7-3 .6-.7 3Z" />
+            </svg>
+          </div>
+          <div class="work__body">
+            <div class="work__title">
+              <h3>StyleSnap</h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8.5 7H17v8.5" /></svg>
+            </div>
+            <p>Point at any element on any page and read its CSS instantly. The inspector step you do fifty times a day, cut to one click.</p>
+            <ul class="tags"><li>Chrome</li><li>DevTools</li><li>CSS</li></ul>
+          </div>
+        </a>
+
+      </div>
+
+      <div class="works-more rv">
+        <a class="btn btn--ghost btn--lg" href="https://rohitsainier.github.io/pages/" target="_blank" rel="noopener noreferrer">
+          View full portfolio
+          <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5.5-6 6 6-6 6" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ tech strip ============ -->
+  <section class="tech band" id="tech" style="padding-block: clamp(48px, 7vw, 84px)">
+    <div class="wrap">
+      <div class="sec-head rv" style="max-width:640px">
+        <span class="eyebrow">The stack</span>
+        <h2>Built close to the metal.</h2>
+        <p>On-device where it matters, cloud where it scales. No demo-grade shortcuts that fall
+          over on the second user.</p>
+      </div>
+    </div>
+
+    <div class="marquee-mask rv" aria-hidden="true">
+      <div class="marquee">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="6.5" width="11" height="11" rx="2.4"/><path d="M9.6 3v3.5M14.4 3v3.5M9.6 17.5V21M14.4 17.5V21M3 9.6h3.5M3 14.4h3.5M17.5 9.6H21M17.5 14.4H21"/></svg>On-device AI</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 4.6 6v6c0 4.6 3.1 8 7.4 9.2 4.3-1.2 7.4-4.6 7.4-9.2V6Z"/><path d="m9.2 12 2 2 3.6-3.8"/></svg>Privacy-first</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 2.6 4.6 13.4h6L10.6 21.4l8.8-10.8h-6Z"/></svg>Real-time processing</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6 21 7.4 12 12.2 3 7.4Z"/><path d="m3 12.4 9 4.8 9-4.8"/></svg>SwiftUI &amp; Swift</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3.4v3M12 17.6v3M3.4 12h3M17.6 12h3"/></svg>Rust</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.4 12S6 5.8 12 5.8 21.6 12 21.6 12 18 18.2 12 18.2 2.4 12 2.4 12Z"/><circle cx="12" cy="12" r="2.9"/></svg>Apple Vision</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2.8 9 4.8-9 4.8-9-4.8Z"/><path d="m3 12.4 9 4.8 9-4.8"/><path d="m3 16.8 9 4.8 9-4.8"/></svg>Core ML</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2.6-7.4L12.6 19l2.8-8.6 1.8 3.6H21"/></svg>PyTorch &amp; CUDA</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.2 2.8 2.8L16 9.6"/></svg>Production-grade</span>
+
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="6.5" width="11" height="11" rx="2.4"/><path d="M9.6 3v3.5M14.4 3v3.5M9.6 17.5V21M14.4 17.5V21M3 9.6h3.5M3 14.4h3.5M17.5 9.6H21M17.5 14.4H21"/></svg>On-device AI</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 4.6 6v6c0 4.6 3.1 8 7.4 9.2 4.3-1.2 7.4-4.6 7.4-9.2V6Z"/><path d="m9.2 12 2 2 3.6-3.8"/></svg>Privacy-first</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13.4 2.6 4.6 13.4h6L10.6 21.4l8.8-10.8h-6Z"/></svg>Real-time processing</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6 21 7.4 12 12.2 3 7.4Z"/><path d="m3 12.4 9 4.8 9-4.8"/></svg>SwiftUI &amp; Swift</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3.4v3M12 17.6v3M3.4 12h3M17.6 12h3"/></svg>Rust</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.4 12S6 5.8 12 5.8 21.6 12 21.6 12 18 18.2 12 18.2 2.4 12 2.4 12Z"/><circle cx="12" cy="12" r="2.9"/></svg>Apple Vision</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2.8 9 4.8-9 4.8-9-4.8Z"/><path d="m3 12.4 9 4.8 9-4.8"/><path d="m3 16.8 9 4.8 9-4.8"/></svg>Core ML</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2.6-7.4L12.6 19l2.8-8.6 1.8 3.6H21"/></svg>PyTorch &amp; CUDA</span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.2 2.8 2.8L16 9.6"/></svg>Production-grade</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ stats ============ -->
+  <section class="band" style="padding-block: clamp(56px, 8vw, 96px)">
+    <div class="wrap">
+      <div class="stats stagger">
+        <div class="stat card rv"><b><span data-count="50" data-suffix="+">50+</span></b><span>Projects shipped</span></div>
+        <div class="stat card rv"><b><span data-count="9">9</span></b><span>AI capabilities in-house</span></div>
+        <div class="stat card rv"><b>Real-time</b><span>Processing, on-device</span></div>
+        <div class="stat card rv"><b><span data-count="4">4</span></b><span>Platforms: macOS, iOS, web, Chrome</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="band" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta-box rv">
+        <h2>Have a product in mind?<br /><span class="grad-text">Let's build it.</span></h2>
+        <p>Tell us what you are trying to make. If it involves a face, a voice, or a camera,
+          there is a good chance we have already built most of it.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary btn--lg" href="mailto:hello@syncdrop.ai?subject=Project%20enquiry%20for%20SyncDrop">
+            hello@syncdrop.ai
+            <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13m-5.5-6 6 6-6 6" /></svg>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#work">Browse the work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ contact ============ -->
+  <section class="band" id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">Contact</span>
+        <h2>Two ways in.</h2>
+        <p>No forms, no funnels, no discovery call about a discovery call. Email us or read our code.</p>
+      </div>
+
+      <div class="contact-grid stagger">
+        <a class="card contact-card rv" href="mailto:hello@syncdrop.ai?subject=Project%20enquiry%20for%20SyncDrop">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.6" y="4.6" width="18.8" height="14.8" rx="3" />
+              <path d="m3.6 7 8.4 6 8.4-6" />
+            </svg>
+          </div>
+          <span>Email</span>
+          <strong>hello@syncdrop.ai</strong>
+          <p>Scope, timeline, a rough budget. We reply with what we would actually build.</p>
+        </a>
+
+        <a class="card contact-card rv" href="https://github.com/rohitsainier" target="_blank" rel="noopener noreferrer">
+          <div class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1.6a10.4 10.4 0 0 0-3.3 20.3c.5.1.7-.2.7-.5v-2c-2.9.6-3.5-1.3-3.5-1.3-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.3-.3-4.7-1.2-4.7-5.2 0-1.1.4-2 1-2.8-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.8 1.1a9.6 9.6 0 0 1 5.1 0c1.9-1.4 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.7.7.8 1 1.7 1 2.8 0 4-2.4 4.9-4.7 5.2.4.3.7 1 .7 2v3c0 .3.2.6.7.5A10.4 10.4 0 0 0 12 1.6Z" />
+            </svg>
+          </div>
+          <span>Code</span>
+          <strong>github.com/rohitsainier</strong>
+          <p>The apps above, plus the experiments that became them. Have a look before you write.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ footer ============ -->
+<footer class="footer page">
+  <div class="wrap">
+    <div class="footer__top">
+      <div>
+        <a class="logo" href="#top" aria-label="SyncDrop — back to top">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#2dd4bf" /><stop offset=".5" stop-color="#22d3ee" /><stop offset="1" stop-color="#a855f7" />
+              </linearGradient>
+            </defs>
+            <path d="M16 3c5.9 6.8 9.2 11.3 9.2 15.2a9.2 9.2 0 0 1-18.4 0C6.8 14.3 10.1 9.8 16 3Z" fill="url(#lg2)" />
+            <g fill="#06060b">
+              <rect x="11.5" y="16.4" width="2.1" height="5.4" rx="1.05" />
+              <rect x="14.95" y="13.2" width="2.1" height="11.6" rx="1.05" />
+              <rect x="18.4" y="17.4" width="2.1" height="4.2" rx="1.05" />
+            </g>
+          </svg>
+          <span><b>Sync</b>Drop</span>
+        </a>
+        <p class="footer__blurb">An AI products and services studio. Lip sync, speech, vision — and the software that carries them.</p>
+      </div>
+
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Studio</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#work">Portfolio</a></li>
+            <li><a href="#tech">Tech</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Capabilities</h4>
+          <ul>
+            <li><a href="#services">AI Lip Sync</a></li>
+            <li><a href="#services">Speech &amp; voice</a></li>
+            <li><a href="#services">Vision &amp; AR</a></li>
+            <li><a href="#services">App development</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Elsewhere</h4>
+          <ul>
+            <li><a href="https://rohitsainier.github.io/pages/" target="_blank" rel="noopener noreferrer">Full portfolio</a></li>
+            <li><a href="https://github.com/rohitsainier" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="mailto:hello@syncdrop.ai">hello@syncdrop.ai</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2026 SyncDrop. All rights reserved.</p>
+      <div class="footer__social">
+        <a href="https://github.com/rohitsainier" target="_blank" rel="noopener noreferrer" aria-label="SyncDrop on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.6a10.4 10.4 0 0 0-3.3 20.3c.5.1.7-.2.7-.5v-2c-2.9.6-3.5-1.3-3.5-1.3-.5-1.2-1.2-1.5-1.2-1.5-.9-.6.1-.6.1-.6 1 .1 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.3-.3-4.7-1.2-4.7-5.2 0-1.1.4-2 1-2.8-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.8 1.1a9.6 9.6 0 0 1 5.1 0c1.9-1.4 2.8-1.1 2.8-1.1.5 1.4.2 2.4.1 2.7.7.8 1 1.7 1 2.8 0 4-2.4 4.9-4.7 5.2.4.3.7 1 .7 2v3c0 .3.2.6.7.5A10.4 10.4 0 0 0 12 1.6Z" /></svg>
+        </a>
+        <a href="mailto:hello@syncdrop.ai" aria-label="Email SyncDrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="4.6" width="18.8" height="14.8" rx="3" /><path d="m3.6 7 8.4 6 8.4-6" /></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
